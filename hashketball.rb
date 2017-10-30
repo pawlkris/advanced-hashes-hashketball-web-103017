@@ -267,5 +267,6 @@ def winning_team
         awaytot += hash[:points]
       end
     end
-    (hometot > awaytot ? game_hash[:home][:team_name] : game_hash[:away][:team_name])
   end
+  (hometot > awaytot ? game_hash[:home][:team_name] : game_hash[:away][:team_name])
+end
