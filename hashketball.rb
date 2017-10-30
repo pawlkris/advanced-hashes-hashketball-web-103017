@@ -269,7 +269,3 @@ def winning_team
     end
     (hometot > awaytot ? game_hash[:home][:team_name] : game_hash[:away][:team_name])
   end
-  
-        
-      
-    
