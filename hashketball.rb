@@ -216,12 +216,12 @@ def big_shoe_rebounds
     biggest = nil
     shoes = {}
 
-    game_hash.each do |location, data|
-      data.each do |key, value|
+    game_hash.each do |teams, team_hash|
+      team_hash.each do |key, value|
         if key == :players
           value.each do |name, stats|
             stats.each do |stat, value|
-              shoes[name] = game_hash[location][:players][name][:shoe] if stat == :shoe
+              shoes[name] = game_hash[teams][:players][name][:shoe] if stat == :shoe
             end
           end
         end
