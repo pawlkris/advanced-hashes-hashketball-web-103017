@@ -253,4 +253,23 @@ def most_points_scored
         end
       end
       return mostname
+  end
+
+def winning_team
+  hometot = 0
+  awaytot = 0
+  game_hash.each do |teams, team_hash|
+    team_hash[:players].each do |name, hash|
+      case teams
+      when :home
+        hometot += hash[:points]
+      when :away
+        awaytot += hash[:points]
+      end
     end
+    (hometot > awaytot ? game_hash[:home][:team_name] : game_hash[:away][:team_name])
+  end
+  
+        
+      
+    
