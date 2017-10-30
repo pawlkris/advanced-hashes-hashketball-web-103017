@@ -240,3 +240,15 @@ def big_shoe_rebounds
 #     shoes.each {|player, size| biggest = player if size == shoes.values.max}
 #     return game_hash[:home][:players][biggest][:rebounds]
 # end
+
+def most_points_scored
+      biggest = 0
+      game_hash.each do |teams, team_hash|
+        team_hash[:players].each do |name, hash|
+          if hash[:points] > biggest
+            biggest = hash[:points]
+          end
+        end
+      end
+      biggest
+    end
