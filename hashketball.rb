@@ -243,12 +243,14 @@ def big_shoe_rebounds
 
 def most_points_scored
       biggest = 0
+      mostname = nil
       game_hash.each do |teams, team_hash|
         team_hash[:players].each do |name, hash|
           if hash[:points] > biggest
             biggest = hash[:points]
+            mostname = hash[:name]
           end
         end
       end
-      biggest
+      mostname
     end
