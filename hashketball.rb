@@ -120,60 +120,96 @@ def game_hash
 end
 
 def num_points_scored(name)
-  game_hash = game_hash()
-  home = game_hash[:home][:players].keys
-  away = game_hash[:away][:players].keys
-  if home.include?(name)
-    return game_hash[:home][:players][name][:points].to_i
-  else
-    return game_hash[:away][:players][name][:points].to_i
+  game_hash.each do |team, teamhash|
+    if teamhash[:players].include?(name)
+      return teamhash[:players][name][:points]
+    end
   end
 end
+  # game_hash = game_hash()
+  # home = game_hash[:home][:players].keys
+  # away = game_hash[:away][:players].keys
+  # if home.include?(name)
+  #   return game_hash[:home][:players][name][:points].to_i
+  # else
+  #   return game_hash[:away][:players][name][:points].to_i
+  # end
+
 
 def shoe_size(name)
-  game_hash = game_hash()
-  home = game_hash[:home][:players].keys
-  away = game_hash[:away][:players].keys
-  if home.include?(name)
-    return game_hash[:home][:players][name][:shoe].to_i
-  else
-    return game_hash[:away][:players][name][:shoe].to_i
+  game_hash.each do |team, teamhash|
+    if teamhash[:players].include?(name)
+      return teamhash[:players][name][:shoe]
+    end
   end
 end
+#   game_hash = game_hash()
+#   home = game_hash[:home][:players].keys
+#   away = game_hash[:away][:players].keys
+#   if home.include?(name)
+#     return game_hash[:home][:players][name][:shoe].to_i
+#   else
+#     return game_hash[:away][:players][name][:shoe].to_i
+#   end
+# end
 
 def team_colors(team)
-  if game_hash[:home][:team_name] == team
-    return game_hash[:home][:colors]
-  else
-    return game_hash[:away][:colors]
+  game_hash.each do |teams,team_hash|
+    if team_hash[:team_name] == team
+      return team_hash[:colors]
+    end
   end
 end
 
+#   if game_hash[:home][:team_name] == team
+#     return game_hash[:home][:colors]
+#   else
+#     return game_hash[:away][:colors]
+#   end
+# end
+
 def team_names
-  return [game_hash[:home][:team_name], game_hash[:away][:team_name]]
+  game_hash.collect {|teams,team_hash| team_hash[:team_name]}
 end
 
 def player_numbers(team)
-  numbers = []
-  if game_hash[:home][:team_name] == team
-    numbers = game_hash[:home][:players].keys.collect do |x|
-      game_hash[:home][:players][x][:number]
-    end
-  else
-    numbers = game_hash[:away][:players].keys.collect do |x|
-    game_hash[:away][:players][x][:number]
+  array = []
+  game_hash.each do |teams,team_hash|
+    if team_hash[:team_name] == team
+      team_hash[:players].collect do |player,player_hash|
+        array << player_hash[:number]
+      end
     end
   end
-  return numbers
+  return array
 end
 
+#   numbers = []
+#   if game_hash[:home][:team_name] == team
+#     numbers = game_hash[:home][:players].keys.collect do |x|
+#       game_hash[:home][:players][x][:number]
+#     end
+#   else
+#     numbers = game_hash[:away][:players].keys.collect do |x|
+#     game_hash[:away][:players][x][:number]
+#     end
+#   end
+#   return numbers
+# end
+
 def player_stats(player)
-  if game_hash[:home][:players].keys.include?(player)
-    return game_hash[:home][:players][player]
-  else
-    return game_hash[:away][:players][player]
+  game_hash.each do |teams,team_hash|
+    if team_hash[:players].include?(player)
+      return team_hash[:players][player]
+    end
   end
 end
+#   if game_hash[:home][:players].keys.include?(player)
+#     return game_hash[:home][:players][player]
+#   else
+#     return game_hash[:away][:players][player]
+#   end
+# end
 
 def big_shoe_rebounds
 
