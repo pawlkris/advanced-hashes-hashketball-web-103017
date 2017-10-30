@@ -223,7 +223,6 @@ def big_shoe_rebounds
         end
       end
     end
-    rebounds
   end
 
 #       team_hash.each do |key, value|
