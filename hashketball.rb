@@ -252,5 +252,5 @@ def most_points_scored
           end
         end
       end
-      mostname
+      return mostname
     end
