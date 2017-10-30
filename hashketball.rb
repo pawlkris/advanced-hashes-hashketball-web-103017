@@ -213,14 +213,17 @@ end
 
 def big_shoe_rebounds
 
-    biggest = nil
-    shoes = {}
+    biggest = 0
+    rebounds = nil
 
     game_hash.each do |teams, team_hash|
       team_hash[:players].each do |name, hash|
-        binding.pry
+        if hash[:shoe] > biggest
+          rebounds = hash[:rebounds]
+        end
       end
     end
+    rebounds
   end
 
 #       team_hash.each do |key, value|
