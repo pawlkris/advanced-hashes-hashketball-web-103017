@@ -248,7 +248,7 @@ def most_points_scored
         team_hash[:players].each do |name, hash|
           if hash[:points] > biggest
             biggest = hash[:points]
-            mostname = hash[:name]
+            mostname = name
           end
         end
       end
