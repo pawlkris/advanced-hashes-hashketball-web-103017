@@ -217,17 +217,22 @@ def big_shoe_rebounds
     shoes = {}
 
     game_hash.each do |teams, team_hash|
-      team_hash.each do |key, value|
-        if key == :players
-          value.each do |name, stats|
-            stats.each do |stat, value|
-              shoes[name] = game_hash[teams][:players][name][:shoe] if stat == :shoe
-            end
-          end
-        end
+      team_hash[:players].each do |name, hash|
+        binding.pry
       end
     end
-
-    shoes.each {|player, size| biggest = player if size == shoes.values.max}
-    return game_hash[:home][:players][biggest][:rebounds]
-end
+  end
+      
+#       team_hash.each do |key, value|
+#         if key == :players
+#           value.each do |name, stats|
+#             stats.each do |stat, value|
+#               shoes[name] = game_hash[teams][:players][name][:shoe] if stat == :shoe
+#             end
+#           end
+#         end
+#       end
+#     end
+#     shoes.each {|player, size| biggest = player if size == shoes.values.max}
+#     return game_hash[:home][:players][biggest][:rebounds]
+# end
