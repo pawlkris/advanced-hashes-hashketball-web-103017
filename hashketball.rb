@@ -220,6 +220,7 @@ def big_shoe_rebounds
       team_hash[:players].each do |name, hash|
         if hash[:shoe] > biggest
           rebounds = hash[:rebounds]
+          biggest = hash[:shoe]
         end
       end
     end
